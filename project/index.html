@@ -1,198 +1,268 @@
 <!DOCTYPE html>
 <!-- saved from url=(0039)http://prophessor.16mb.com/console.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Console</title>
-	
+
 	<meta name="Generator" content="Vim/8.0">
 	<meta name="plugin-version" content="vim7.4_v2">
 	<meta name="syntax" content="jsmobilebasic">
 	<meta name="settings" content="number_lines,use_css,pre_wrap,no_foldcolumn,expand_tabs,line_ids,prevent_copy=">
 	<meta name="colorscheme" content="desert">
-	<style type="text/css"><!--
-			#console-input{
-				width:100%;
-				position:fixed;
-					bottom:0px;
-					left:0px;
-				background-color:rgba(32,32,32,32);
-				color:#00ff00;
-				border:5px double black;
-			}
-			.error{
-				color:red;
-			}
-			.warning{
-				color:yellow;
-			}
-			.info{
-				color:#00aaff;
-			}
-			.great{
-				color:#00ff00;
-			}
-			.fail{
-				color:pink;
-			}
-			.none{
-				color:white;
-			}
-			red{
-				color:red;
-			}
-			green{
-				color:#00ff00;
-			}
-			orange{
-				color:orange;
-			}
-			yellow{
-				color:yellow;
-			}
-			blue{
-				color:#00aaff;
-			}
-			pink{
-				color:pink;
-			}
-			purple{
-				color:purple;
-			}
-			white-space: pre-wrap;       /* css-3 */
-    			white-space: -moz-pre-wrap;  /* Mozilla, с 1999 */
-     		white-space: -pre-wrap;      /* Opera 4-6 */
-     		white-space: -o-pre-wrap;    /* Opera 7 */
-     		word-wrap: break-word;
-	--></style><style id="styles">pre { white-space: pre-wrap; font-family: monospace; color: #ffffff; background-color: #333333; }body { font-family: monospace; color: #ffffff; background-color: #333333; }* { font-size: 1em; }.Statement { color: #f0e68c; font-weight: bold; }.LineNr { color: #ffff00; }.Comment { color: #87ceeb; }.Constant { color: #ffa0a0; }.Identifier { color: #98fb98; }.Todo { color: #ff4500; background-color: #eeee00; padding-bottom: 1px; }</style>
+	<style type="text/css">
+		<!-- #console-input {
+			width: 100%;
+			position: fixed;
+			bottom: 0px;
+			left: 0px;
+			background-color: rgba(32, 32, 32, 32);
+			color: #00ff00;
+			border: 5px double black;
+		}
+		
+		.error {
+			color: red;
+		}
+		
+		.warning {
+			color: yellow;
+		}
+		
+		.info {
+			color: #00aaff;
+		}
+		
+		.great {
+			color: #00ff00;
+		}
+		
+		.fail {
+			color: pink;
+		}
+		
+		.none {
+			color: white;
+		}
+		
+		red {
+			color: red;
+		}
+		
+		green {
+			color: #00ff00;
+		}
+		
+		orange {
+			color: orange;
+		}
+		
+		yellow {
+			color: yellow;
+		}
+		
+		blue {
+			color: #00aaff;
+		}
+		
+		pink {
+			color: pink;
+		}
+		
+		purple {
+			color: purple;
+		}
+		
+		white-space: pre-wrap;
+		/* css-3 */
+		
+		white-space: -moz-pre-wrap;
+		/* Mozilla, с 1999 */
+		
+		white-space: -pre-wrap;
+		/* Opera 4-6 */
+		
+		white-space: -o-pre-wrap;
+		/* Opera 7 */
+		
+		word-wrap: break-word;
+	</style>
+	<style id="styles">
+		pre {
+			white-space: pre-wrap;
+			font-family: monospace;
+			color: #ffffff;
+			background-color: #333333;
+		}
+		
+		body {
+			font-family: monospace;
+			color: #ffffff;
+			background-color: #333333;
+		}
+		
+		* {
+			font-size: 1em;
+		}
+		
+		.Statement {
+			color: #f0e68c;
+			font-weight: bold;
+		}
+		
+		.LineNr {
+			color: #ffff00;
+		}
+		
+		.Comment {
+			color: #87ceeb;
+		}
+		
+		.Constant {
+			color: #ffa0a0;
+		}
+		
+		.Identifier {
+			color: #98fb98;
+		}
+		
+		.Todo {
+			color: #ff4500;
+			background-color: #eeee00;
+			padding-bottom: 1px;
+		}
+	</style>
 	<script type="text/javascript">
 		var cmds = [];
 		var $i = 0;
 		var $i1 = $i;
 		$Config = {
-			theme:"desert",
-			themes:{
-				desert:"pre { white-space: pre-wrap; font-family: monospace; color: #ffffff; background-color: #333333; }body { font-family: monospace; color: #ffffff; background-color: #333333; }* { font-size: 1em; }.Statement { color: #f0e68c; font-weight: bold; }.LineNr { color: #ffff00; }.Comment { color: #87ceeb; }.Constant { color: #ffa0a0; }.Identifier { color: #98fb98; }.Todo { color: #ff4500; background-color: #eeee00; padding-bottom: 1px; }",
-				elflord:"pre { white-space: pre-wrap; font-family: monospace; color: #00ffff; background-color: #000000; }body { font-family: monospace; color: #00ffff; background-color: #000000; }* { font-size: 1em; }.Function { color: #ffffff; }.Repeat { color: #ffffff; }.Statement { color: #aa4444; font-weight: bold; }.LineNr { color: #ffff00; }.Comment { color: #80a0ff; }.Constant { color: #ff00ff; }.Todo { color: #0000ff; background-color: #ffff00; padding-bottom: 1px; }",
-				solarized:"pre { white-space: pre-wrap; font-family: monospace; color: #839496; background-color: #002b36; } body { font-family: monospace; color: #839496; background-color: #002b36; } * { font-size: 1em; } .Statement { color: #719e07; } .LineNr { color: #586e75; background-color: #073642; padding-bottom: 1px; } .Comment { color: #586e75; font-style: italic; } .Constant { color: #2aa198; } .Identifier { color: #268bd2; } .Todo { color: #d33682; font-weight: bold; }"
+			theme: "desert",
+			themes: {
+				desert: "pre { white-space: pre-wrap; font-family: monospace; color: #ffffff; background-color: #333333; }body { font-family: monospace; color: #ffffff; background-color: #333333; }* { font-size: 1em; }.Statement { color: #f0e68c; font-weight: bold; }.LineNr { color: #ffff00; }.Comment { color: #87ceeb; }.Constant { color: #ffa0a0; }.Identifier { color: #98fb98; }.Todo { color: #ff4500; background-color: #eeee00; padding-bottom: 1px; }",
+				elflord: "pre { white-space: pre-wrap; font-family: monospace; color: #00ffff; background-color: #000000; }body { font-family: monospace; color: #00ffff; background-color: #000000; }* { font-size: 1em; }.Function { color: #ffffff; }.Repeat { color: #ffffff; }.Statement { color: #aa4444; font-weight: bold; }.LineNr { color: #ffff00; }.Comment { color: #80a0ff; }.Constant { color: #ff00ff; }.Todo { color: #0000ff; background-color: #ffff00; padding-bottom: 1px; }",
+				solarized: "pre { white-space: pre-wrap; font-family: monospace; color: #839496; background-color: #002b36; } body { font-family: monospace; color: #839496; background-color: #002b36; } * { font-size: 1em; } .Statement { color: #719e07; } .LineNr { color: #586e75; background-color: #073642; padding-bottom: 1px; } .Comment { color: #586e75; font-style: italic; } .Constant { color: #2aa198; } .Identifier { color: #268bd2; } .Todo { color: #d33682; font-weight: bold; }"
 			},
-			users:[{
-				login:'admin',
-				password:'Vm0xd1IxbFhSWGhXV0d4V1lUSm9WRmxyWkc5VlJsWnlWV3RLVUZWVU1Eaz0=',
-				permission:'admin',
-				name:"Администратор"
-			},{
-				login:'user',
-				password:'Vm1wS01GbFhTWGhWV0d4VVlUSm9WbGxzVWxkVmJGcHlWV3RLVUZWVU1Eaz0=',
-				name:"Пользователь",
-				permission:'user'
-			},{
-				login:'PROPHESSOR',
-				password:'Vm0weE5GWXhiRmRVYmxKV1YwZG9XRmxVUm5kaU1WWnpWMjVrVjAxV1NsaFdiRkpIVm14YWMyTkdiRmhYU0VKNlZsWmFWMVpWTVVWaGVqQTk=',
-				name:"PROPHESSOR",
-				permission:'admin'
+			users: [{
+				login: 'admin',
+				password: 'Vm0xd1IxbFhSWGhXV0d4V1lUSm9WRmxyWkc5VlJsWnlWV3RLVUZWVU1Eaz0=',
+				permission: 'admin',
+				name: "Администратор"
+			}, {
+				login: 'user',
+				password: 'Vm1wS01GbFhTWGhWV0d4VVlUSm9WbGxzVWxkVmJGcHlWV3RLVUZWVU1Eaz0=',
+				name: "Пользователь",
+				permission: 'user'
+			}, {
+				login: 'PROPHESSOR',
+				password: 'Vm0weE5GWXhiRmRVYmxKV1YwZG9XRmxVUm5kaU1WWnpWMjVrVjAxV1NsaFdiRkpIVm14YWMyTkdiRmhYU0VKNlZsWmFWMVpWTVVWaGVqQTk=',
+				name: "PROPHESSOR",
+				permission: 'admin'
 			}
-			
+
 			],
-			login:true
+			login: true
 		};
 		$LOG$ = [];
 		$Modules = [];
 		$Commands = [{
-			cmd:'reload',
-			func:'lsaveData();window.location.reload();',
-			help:'Перезагружает консольку',
-			permission:'user'
+			cmd: 'reload',
+			func: 'lsaveData();window.location.reload();',
+			help: 'Перезагружает консольку',
+			permission: 'user'
 		},
 		//Развлечение
 		{
-			cmd:'flip',
-			func:'var tmp = Math.floor(Math.random()*100);if(tmp>=50){addConsoleReturn("Да","w");}else{addConsoleReturn("Нет","w");}',
-			help:'Заменяет подбрасывание монетки: выводит Да/Нет',
-			perm:"user"
+			cmd: 'flip',
+			func: 'var tmp = Math.floor(Math.random()*100);if(tmp>=50){addConsoleReturn("Да","w");}else{addConsoleReturn("Нет","w");}',
+			help: 'Заменяет подбрасывание монетки: выводит Да/Нет',
+			perm: "user"
 		},
 
 		//Администрирование
 		{
-			cmd:'addUser',
-			func:'var tmp = command.split(" ");if(tmp[1]&&tmp[2]&&tmp[3]&&tmp[4]){$Config.users.push({login:command.split(" ")[1],password:btoa(command.split(" ")[2]),name:command.split(" ")[3],permission:command.split(" ")[4]});addConsoleReturn("Пользователь успешно добавлен!","g");lsaveData();}else{addConsoleReturn("Неверный формат!","e");};',
-			help:'Добавляет пользователя: логин пароль имя права',
-			permission:'admin'
+			cmd: 'addUser',
+			func: 'var tmp = command.split(" ");if(tmp[1]&&tmp[2]&&tmp[3]&&tmp[4]){$Config.users.push({login:command.split(" ")[1],password:btoa(command.split(" ")[2]),name:command.split(" ")[3],permission:command.split(" ")[4]});addConsoleReturn("Пользователь успешно добавлен!","g");lsaveData();}else{addConsoleReturn("Неверный формат!","e");};',
+			help: 'Добавляет пользователя: логин пароль имя права',
+			permission: 'admin'
 		},
 		{
-			cmd:'removeUser',
-			func:'var tmp = command.split(" ");if(tmp[1]){for(i in $Config.users){if($Config.users[i].login==tmp[1]){$Config.users.splice(i,1);addConsoleReturn("Пользователь успешно удалён!","g");lsaveData();if(tmp[1]==$TMP$.currentUser.login){window.location.reload();}continue;}}/*addConsoleReturn("Такого пользователя не существует!","e");*/}else{addConsoleReturn("Вы не указали пользователя!","e");};',
-			help:'Удаляет пользователя: логин',
-			permission:'admin'
+			cmd: 'removeUser',
+			func: 'var tmp = command.split(" ");if(tmp[1]){for(i in $Config.users){if($Config.users[i].login==tmp[1]){$Config.users.splice(i,1);addConsoleReturn("Пользователь успешно удалён!","g");lsaveData();if(tmp[1]==$TMP$.currentUser.login){window.location.reload();}continue;}}/*addConsoleReturn("Такого пользователя не существует!","e");*/}else{addConsoleReturn("Вы не указали пользователя!","e");};',
+			help: 'Удаляет пользователя: логин',
+			permission: 'admin'
 		}
 
 		];
 		$Help = "";
 		$TMP$ = {
-			block:false
+			block: false
 		};
-		
-		function saveLog(){
+
+		function saveLog() {
 			var tmp = toJSON($LOG$);
 			window.localStorage.setItem('log', tmp);
 		}
 
-		function log(){
+		function log() {
 			var tmp = "";
-			for(i in arguments){
+			for (i in arguments) {
 				tmp += arguments[i];
 			}
 			$LOG$.push(tmp);
 			/*saveLog();*/
 			console.log(tmp);
 		}
-		function lreadData(){
+		function lreadData() {
 			var tmp = window.localStorage.getItem('config');
-			if(parseJSON(tmp)===null){
+			if (parseJSON(tmp) === null) {
 				log('Первый запуск!');
 				lsaveData();
-			}else{
+			} else {
 				$Config = parseJSON(tmp);
 			}
 			var lg = window.localStorage.getItem('log');
-			if(parseJSON(lg)===null){
-				$LOG$.push("[F]"+Date().toString());
+			if (parseJSON(lg) === null) {
+				$LOG$.push("[F]" + Date().toString());
 				window.localStorage.setItem('log', toJSON($LOG$));
-			}else{
+			} else {
 				$LOG$ = parseJSON(lg);
 				$LOG$.push(Date().toString());
 			}
 			log('-Конфигурация успешно загружена!');
 		}
-		function lsaveData(){
+		function lsaveData() {
 			var tmp = toJSON($Config);
-			window.localStorage.setItem('config',tmp);
+			window.localStorage.setItem('config', tmp);
 			saveLog();
 			log('-Конфигурация успешно сохранена!');
 		}
-		function lclearData(){
+		function lclearData() {
 			window.localStorage.clear();
 			log('-Все данные успешно удалены!');
 		}
-		function showLog(){
-			console.log($LOG$.toString().replace(/,/g,'\n'));
+		function showLog() {
+			console.log($LOG$.toString().replace(/,/g, '\n'));
 		}
 
-		function prelogin(){
-			if($Config.login){
-			    loginform();
-			}else{
-				pre.innerHTML+='Для просмотра справки - наберите <span class="Statement" onclick="addCmd(\'help\')">help</span><br><br><span id="L1" class="LineNr">1  </span>';
+		function prelogin() {
+			if ($Config.login) {
+				loginform();
+			} else {
+				pre.innerHTML += 'Для просмотра справки - наберите <span class="Statement" onclick="addCmd(\'help\')">help</span><br><br><span id="L1" class="LineNr">1  </span>';
 			}
 		}
-		
 
-/*Main*/
-		function Main(){
+
+		/*Main*/
+		function Main() {
 			log('Инициализация...');
 			lreadData();
 			loadModules();
 			/*loadHelp();*/
 			setColorScheme($Config.theme);
-			log('-Тема '+$Config.theme+' задана!');
+			log('-Тема ' + $Config.theme + ' задана!');
 			pre = document.getElementById('vimCodeElement');
 			TIMER = setInterval(Loop, 10);
 			input = document.getElementById('console-input');
@@ -202,116 +272,116 @@
 			prelogin();
 		}
 
-		function loginSuccess(){
-			$LOG$.push("["+$TMP$.currentUser.login+"]");
+		function loginSuccess() {
+			$LOG$.push("[" + $TMP$.currentUser.login + "]");
 			loadHelp();
 		}
-		function setColorScheme(scheme){
-			var style=document.getElementById('styles');
-			for(i in $Config.themes){
-				if(i == scheme){
+		function setColorScheme(scheme) {
+			var style = document.getElementById('styles');
+			for (i in $Config.themes) {
+				if (i == scheme) {
 					style.innerHTML = $Config.themes[i];
 					$Config.theme = scheme;
 					lsaveData();
 					return;
 				}
 			}
-			addConsoleReturn('Такой темы не существует!','e');
+			addConsoleReturn('Такой темы не существует!', 'e');
 			style.innerHTML = $Config.themes.desert;
 		}
 
 		function scrollDown() {
-		    var scrollHeight = document.documentElement.scrollHeight;
-		    var clientHeight = document.documentElement.clientHeight;
-		    scrollHeight = Math.max(scrollHeight, clientHeight);
-		    window.scrollTo(0, scrollHeight - document.documentElement.clientHeight)
-		}
-		
-		function Loop(){
+			var scrollHeight = document.documentElement.scrollHeight;
+			var clientHeight = document.documentElement.clientHeight;
+			scrollHeight = Math.max(scrollHeight, clientHeight);
+			window.scrollTo(0, scrollHeight - document.documentElement.clientHeight)
 		}
 
-		function addConsoleOut(text){
-			if(!$TMP$.block){
-				if(counter==1){
-					pre.innerHTML+='<span class="Comment">'+text+'</span>';
-				}else{
-					pre.innerHTML+='<br/><span class="LineNr">'+counter+' </span> <span class="Comment">'+text+'</span>';
+		function Loop() {
+		}
+
+		function addConsoleOut(text) {
+			if (!$TMP$.block) {
+				if (counter == 1) {
+					pre.innerHTML += '<span class="Comment">' + text + '</span>';
+				} else {
+					pre.innerHTML += '<br/><span class="LineNr">' + counter + ' </span> <span class="Comment">' + text + '</span>';
 				}
 				counter++;
 			}
 		}
-		function addConsoleReturn(text,type){
+		function addConsoleReturn(text, type) {
 			var classname = 'none';
-			switch(type){
+			switch (type) {
 				case 'e':
-					classname="error";
+					classname = "error";
 					break;
 				case 'w':
-					classname="warning";
+					classname = "warning";
 					break;
 				case 'i':
-					classname="info";
+					classname = "info";
 					break;
 				case 'g':
-					classname="great";
+					classname = "great";
 					break;
 				case 'f':
-					classname="fail";
+					classname = "fail";
 					break;
 				default:
-					classname=type;
+					classname = type;
 					break;
 			}
-			pre.innerHTML+='<br/><return><span class="'+classname+'">'+text+'</span></return>';
+			pre.innerHTML += '<br/><return><span class="' + classname + '">' + text + '</span></return>';
 		}
-		function addCommand(cmd,func,help){
-			$Commands.push({cmd:cmd,func:func,help:help});
+		function addCommand(cmd, func, help) {
+			$Commands.push({ cmd: cmd, func: func, help: help });
 			loadHelp(true);
-			log('Команда '+cmd+"успешно добавлена!");
+			log('Команда ' + cmd + "успешно добавлена!");
 		}
 
-		function loadModuleByUrl(url){
-			log('--Подключаю модуль с URL: '+url+'...');
+		function loadModuleByUrl(url) {
+			log('--Подключаю модуль с URL: ' + url + '...');
 			var tmp = document.createElement('script');
-			tmp.type="text/javascript";
-			tmp.src=url;
+			tmp.type = "text/javascript";
+			tmp.src = url;
 			document.head.appendChild(tmp);
 			log('--Модуль успешно подключён!');
 		}
-		
-		function addColorScheme(name,css){
-		    $Config.themes[name] = css;
-		    return true;
+
+		function addColorScheme(name, css) {
+			$Config.themes[name] = css;
+			return true;
 		}
 
-		function onKeyDown(keycode){
-			switch(keycode){
+		function onKeyDown(keycode) {
+			switch (keycode) {
 				case 13: //enter
 					addConsoleOut(input.value);
 					evalCommand(input.value);
-					if(input.value != "" && !$TMP$.block){
+					if (input.value != "" && !$TMP$.block) {
 						cmds.push(input.value);
 						$i++;
 						$i1 = $i;
 					}
-					input.value='';
+					input.value = '';
 					scrollDown();
 					break;
 				case 38: //up
-					if($i1>0){
+					if ($i1 > 0) {
 						$i1--;
-						input.value=cmds[$i1];
+						input.value = cmds[$i1];
 						//log(cmds[$i1]);
-					}else{
+					} else {
 						//log('No up');
 					}
 					break;
 				case 40: //down
-					if($i1<$i-1){
+					if ($i1 < $i - 1) {
 						$i1++;
-						input.value=cmds[$i1];
+						input.value = cmds[$i1];
 						//log(cmds[$i1]);
-					}else{
+					} else {
 						//log('No down');
 					}
 					break;
@@ -319,58 +389,58 @@
 			//log(keycode);
 		}
 
-		function block(){
-		    	return false;
+		function block() {
+			return false;
 		}
-		function login(login,password){
-			for(var i in $Config.users){
-				if($Config.users[i].login == login){
-					if($Config.users[i].password == polyCrypt(password,7)){
+		function login(login, password) {
+			for (var i in $Config.users) {
+				if ($Config.users[i].login == login) {
+					if ($Config.users[i].password == polyCrypt(password, 7)) {
 						$TMP$.currentUser = $Config.users[i];
 						return true;
-					}else{
+					} else {
 						return false;
 					}
 				}
 			}
 		}
-		function loginform(number){
-			if(number === undefined){
+		function loginform(number) {
+			if (number === undefined) {
 				$TMP$.block = true;
-				pre.innerHTML+='Введите логин:<br/>';
-				block = function(command){
+				pre.innerHTML += 'Введите логин:<br/>';
+				block = function (command) {
 					$TMP$.login = command;
 					loginform(1);
 				}
-			}else if(number == 1){
-				pre.innerHTML+='Введите пароль:';
-				block = function(command){
+			} else if (number == 1) {
+				pre.innerHTML += 'Введите пароль:';
+				block = function (command) {
 					$TMP$.password = command;
 					loginform(2);
 				}
-			}else if(number == 2){
-				if(login($TMP$.login,$TMP$.password)){
-					clear([["С возвращением, "+$TMP$.currentUser.name+"!",'i']]);
+			} else if (number == 2) {
+				if (login($TMP$.login, $TMP$.password)) {
+					clear([["С возвращением, " + $TMP$.currentUser.name + "!", 'i']]);
 					$TMP$.block = false;
 					loginSuccess();
-				}else{
-					addConsoleReturn("Неверный логин, или пароль!<br/>",'e');
+				} else {
+					addConsoleReturn("Неверный логин, или пароль!<br/>", 'e');
 					loginform();
 				}
 			}
 		}
 
-		function evalCommand(command){
-			if(!$TMP$.block){
-				switch(command.split(' ')[0]){
+		function evalCommand(command) {
+			if (!$TMP$.block) {
+				switch (command.split(' ')[0]) {
 					case 'help':
-						addConsoleReturn('<pink>#==========Список доступных команд==========#<br/>#==========Основные команды=================#</pink><br/><orange onclick="addCmd(\'help\');">help</orange> - выводит список команд (эта команда)<br/><orange onclick="addCmd(\'eval \'">eval [команда]</orange> - выполняет произвольную JavaScript/JsMobileBasic команду<br/><orange onclick="addCmd(\'clear\');">clear</orange> - очищает экран<br/><orange onclick="addCmd(\'setcolorscheme\');">setcolorscheme тема</orange> - Смена цветовой схемы (desert,elflord,solarized)<br/><pink>#==========Дополнительные команды===========#</pink><br/>'+$Help,'i');
+						addConsoleReturn('<pink>#==========Список доступных команд==========#<br/>#==========Основные команды=================#</pink><br/><orange onclick="addCmd(\'help\');">help</orange> - выводит список команд (эта команда)<br/><orange onclick="addCmd(\'eval \'">eval [команда]</orange> - выполняет произвольную JavaScript/JsMobileBasic команду<br/><orange onclick="addCmd(\'clear\');">clear</orange> - очищает экран<br/><orange onclick="addCmd(\'setcolorscheme\');">setcolorscheme тема</orange> - Смена цветовой схемы (desert,elflord,solarized)<br/><pink>#==========Дополнительные команды===========#</pink><br/>' + $Help, 'i');
 						break;
 					case 'eval':
-						if($TMP$.currentUser.permission == 'admin'){
-							try{eval(command.split(' ')[1])}catch(e){addConsoleReturn(e,'w')};
-						}else{
-							addConsoleReturn("У вас недостаточно прав для использования этой команды!",'e');
+						if ($TMP$.currentUser.permission == 'admin') {
+							try { eval(command.split(' ')[1]) } catch (e) { addConsoleReturn(e, 'w') };
+						} else {
+							addConsoleReturn("У вас недостаточно прав для использования этой команды!", 'e');
 						}
 						break;
 					case 'clear':
@@ -382,106 +452,106 @@
 					case '':
 						break;
 					default:
-						if(!moduleCommands(command)){
-							for(i in $Commands){
-								if($Commands[i].cmd==command.split(' ')[0]){
-									if(($Commands[i].perm == $TMP$.currentUser.permission) || ($TMP$.currentUser.permission == "admin")){
+						if (!moduleCommands(command)) {
+							for (i in $Commands) {
+								if ($Commands[i].cmd == command.split(' ')[0]) {
+									if (($Commands[i].perm == $TMP$.currentUser.permission) || ($TMP$.currentUser.permission == "admin")) {
 										eval($Commands[i].func);
 										return true;
 									}
 								}
 							}
-							addConsoleReturn('Такой команды не существует ;(','e');
+							addConsoleReturn('Такой команды не существует ;(', 'e');
 							return false;
 						}
 						break;
 				}
-			}else{
+			} else {
 				block(command);
 			}
 			saveLog();
 		}
-		function addCmd(cmd){
-			input.value=cmd;
+		function addCmd(cmd) {
+			input.value = cmd;
 			input.focus();
 		}
 		//Modules
-		function moduleCommands(command){
-			return false;	
+		function moduleCommands(command) {
+			return false;
 		}
-		function addModule(module){
+		function addModule(module) {
 			$Modules.push(module);
 			saveModules();
 			eval(module);
 		}
 
-		function loadModules(){
+		function loadModules() {
 			var tmp = window.localStorage.getItem('modules');
 			$Modules = parseJSON(tmp);
-			for(i in $Modules){
+			for (i in $Modules) {
 				eval($Modules[i]);
-				log("--Модуль "+i+" загружен!");
+				log("--Модуль " + i + " загружен!");
 			}
 			log('--Модули загружены!');
 		}
-		function saveModules(){
+		function saveModules() {
 			var tmp = toJSON($Modules);
-			window.localStorage.setItem('modules',tmp);
+			window.localStorage.setItem('modules', tmp);
 			log('--Модули успешно сохранены в память!');
 		}
 
-		function removeModule(id){
-			$Modules.splice(id,1);
+		function removeModule(id) {
+			$Modules.splice(id, 1);
 			saveModules();
 			log('--Модуль успешно удалён!');
 		}
-		function loadHelp(reload){
-			if(reload){
+		function loadHelp(reload) {
+			if (reload) {
 				$Help = '';
 			}
-			for(i in $Commands){
-				if(($Commands[i].perm == $TMP$.currentUser.permission) || ($TMP$.currentUser.permission == "admin")){
-					$Help+='<orange onclick=\'addCmd("'+$Commands[i].cmd+'");\'>'+$Commands[i].cmd+"</orange> <yellow>-</yellow> "+$Commands[i].help+";<br/>";
+			for (i in $Commands) {
+				if (($Commands[i].perm == $TMP$.currentUser.permission) || ($TMP$.currentUser.permission == "admin")) {
+					$Help += '<orange onclick=\'addCmd("' + $Commands[i].cmd + '");\'>' + $Commands[i].cmd + "</orange> <yellow>-</yellow> " + $Commands[i].help + ";<br/>";
 				}
 			}
 			log('Справка по командам успешно загружена!');
 		}
 		//API
-		function toJSON(data){
-			return JSON.stringify(data,4);
+		function toJSON(data) {
+			return JSON.stringify(data, 4);
 		}
-		function parseJSON(json){
+		function parseJSON(json) {
 			return JSON.parse(json);
 		}
-		function polyCrypt(data,n){
+		function polyCrypt(data, n) {
 			var tmp = data;
-			for(i=0;i<n;i++){
-			    tmp = btoa(tmp);
+			for (i = 0; i < n; i++) {
+				tmp = btoa(tmp);
 			}
 			return tmp;
 		}
-		function toggleInput(toggle){
+		function toggleInput(toggle) {
 			var tmp = document.getElementById("console-input");
-			if(toggle){//enable
-				tmp.type="text";
-			}else{//disable
-				tmp.type="hidden";
+			if (toggle) {//enable
+				tmp.type = "text";
+			} else {//disable
+				tmp.type = "hidden";
 			}
 		}
-		function fullscreen(mode /*0-off;1-on;-1-toggle*/){
-			if(!mode){
+		function fullscreen(mode /*0-off;1-on;-1-toggle*/) {
+			if (!mode) {
 				require('nw.gui').Window.get().enterKioskMode();
-			}else if(mode == -1){
+			} else if (mode == -1) {
 				require('nw.gui').Window.get().toggleKioskMode();
-			}else{
+			} else {
 				require('nw.gui').Window.get().leaveKioskMode();
 			}
 		}
-		function clear(returns){
+		function clear(returns) {
 			pre.innerHTML = 'PROPHESSOR\'s console.<br>Version 1.0';
-			if(typeof(returns) !== "undefined"){
-				for(i in returns){
-					addConsoleReturn(returns[i][0],returns[i][1]);
+			if (typeof (returns) !== "undefined") {
+				for (i in returns) {
+					addConsoleReturn(returns[i][0], returns[i][1]);
 					/*console.log(returns[i][0],returns[i][1]);*/
 				}
 			}
@@ -491,11 +561,15 @@
 		}
 	</script>
 </head>
+
 <body onload="Main();" onkeydown="onKeyDown(event.keyCode);">
 	<pre id="vimCodeElement">PROPHESSOR's console.<br>Version 1.0<br></pre>
 	<input type="text" id="console-input" onfocus="return true;" autofocus>
 	<!--script>Main();</script-->
 
 
-<!-- vim: set foldmethod=manual : -->
-<!-- vim: set filetype=jsmobilebasic : --></body></html>
+	<!-- vim: set foldmethod=manual : -->
+	<!-- vim: set filetype=jsmobilebasic : -->
+</body>
+
+</html>
