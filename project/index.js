@@ -1,7 +1,7 @@
 var cmds = [];
 var $i = 0;
 var $i1 = $i;
-var cryptCount = 1;
+var cryptCount = 7;
 $Config = {
     theme: "desert",
     themes: {
