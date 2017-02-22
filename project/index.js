@@ -63,6 +63,12 @@ $Commands = [{
     func: 'lsaveData();window.close();',
     help: 'Закрывает консольку',
     permission: 'admin'
+},
+{
+    cmd: 'installModule',
+    func: 'loadModuleByUrl(command.split(" ")[1])',
+    help: 'Устанавливает модуль с указанного URL: url',
+    permission: 'admin'
 }
 
 ];
