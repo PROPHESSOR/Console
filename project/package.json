@@ -1,0 +1,23 @@
+{
+  "name": "Интерпретатор JsMobileBasic",
+  "version": "1.0.0",
+  "description": "Интерпретатор языка JsMobileBasic (http://vk.com/JsMobileBasic)",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PROPHESSOR",
+  "window": {
+    "title": "Интерпретатор JsMobileBasic",
+    "toolbar": false,
+    "width": 800,
+    "height": 500,
+    "fullscreen": false,
+    "kiosk": false,
+    "resizable": false
+  },
+  "license": "ISC",
+  "dependencies": {
+    "pretty-bytes": "^1.0.2"
+  }
+}
