@@ -1,0 +1,3 @@
+#!/bin/bash
+
+jsmb ./project
