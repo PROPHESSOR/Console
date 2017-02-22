@@ -1,0 +1,61 @@
+#console-input {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(32, 32, 32, 32);
+    color: #00ff00;
+    border: 5px double black;
+}
+
+.error {
+    color: red;
+}
+
+.warning {
+    color: yellow;
+}
+
+.info {
+    color: #00aaff;
+}
+
+.great {
+    color: #00ff00;
+}
+
+.fail {
+    color: pink;
+}
+
+.none {
+    color: white;
+}
+
+red {
+    color: red;
+}
+
+green {
+    color: #00ff00;
+}
+
+orange {
+    color: orange;
+}
+
+yellow {
+    color: yellow;
+}
+
+blue {
+    color: #00aaff;
+}
+
+pink {
+    color: pink;
+}
+
+purple {
+    color: purple;
+}
