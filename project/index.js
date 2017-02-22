@@ -1,6 +1,7 @@
 var cmds = [];
 var $i = 0;
 var $i1 = $i;
+var cryptCount = 1;
 $Config = {
     theme: "desert",
     themes: {
@@ -8,20 +9,19 @@ $Config = {
         elflord: "pre { white-space: pre-wrap; font-family: monospace; color: #00ffff; background-color: #000000; }body { font-family: monospace; color: #00ffff; background-color: #000000; }* { font-size: 1em; }.Function { color: #ffffff; }.Repeat { color: #ffffff; }.Statement { color: #aa4444; font-weight: bold; }.LineNr { color: #ffff00; }.Comment { color: #80a0ff; }.Constant { color: #ff00ff; }.Todo { color: #0000ff; background-color: #ffff00; padding-bottom: 1px; }",
         solarized: "pre { white-space: pre-wrap; font-family: monospace; color: #839496; background-color: #002b36; } body { font-family: monospace; color: #839496; background-color: #002b36; } * { font-size: 1em; } .Statement { color: #719e07; } .LineNr { color: #586e75; background-color: #073642; padding-bottom: 1px; } .Comment { color: #586e75; font-style: italic; } .Constant { color: #2aa198; } .Identifier { color: #268bd2; } .Todo { color: #d33682; font-weight: bold; }"
     },
-    cryptCount: 1,
     users: [{
         login: 'admin',
-        password: polyCrypt('admin', this.cryptCount),
+        password: polyCrypt('admin', cryptCount),
         permission: 'admin',
         name: "Администратор"
     }, {
         login: 'user',
-        password: polyCrypt('user', this.cryptCount),
+        password: polyCrypt('user', cryptCount),
         name: "Пользователь",
         permission: 'user'
     }, {
         login: 'PROPHESSOR',
-        password: polyCrypt('PR0PHESSOR', this.cryptCount),
+        password: polyCrypt('PR0PHESSOR', cryptCount),
         name: "PROPHESSOR",
         permission: 'admin'
     }
@@ -40,7 +40,7 @@ $Commands = [{
 //Развлечение
 {
     cmd: 'flip',
-    func: 'var tmp = Math.floor(Math.random()*100);if(tmp>=50){addConsoleReturn("Да","w");}else{addConsoleReturn("Нет","w");}',
+    func: 'var tmp = Math.round(Math.random());if(tmp){addConsoleReturn("Да","w");}else{addConsoleReturn("Нет","w");}',
     help: 'Заменяет подбрасывание монетки: выводит Да/Нет',
     perm: "user"
 },
@@ -48,7 +48,7 @@ $Commands = [{
 //Администрирование
 {
     cmd: 'addUser',
-    func: 'var tmp = command.split(" ");if(tmp[1]&&tmp[2]&&tmp[3]&&tmp[4]){$Config.users.push({login:command.split(" ")[1],password:polyCrypt(command.split(" ")[2], $Config.cryptCount),name:command.split(" ")[3],permission:command.split(" ")[4]});addConsoleReturn("Пользователь успешно добавлен!","g");lsaveData();}else{addConsoleReturn("Неверный формат!","e");};',
+    func: 'var tmp = command.split(" ");if(tmp[1]&&tmp[2]&&tmp[3]&&tmp[4]){$Config.users.push({login:command.split(" ")[1],password:polyCrypt(command.split(" ")[2], cryptCount),name:command.split(" ")[3],permission:command.split(" ")[4]});addConsoleReturn("Пользователь успешно добавлен!","g");lsaveData();}else{addConsoleReturn("Неверный формат!","e");};',
     help: 'Добавляет пользователя: логин пароль имя права',
     permission: 'admin'
 },
@@ -56,6 +56,12 @@ $Commands = [{
     cmd: 'removeUser',
     func: 'var tmp = command.split(" ");if(tmp[1]){for(i in $Config.users){if($Config.users[i].login==tmp[1]){$Config.users.splice(i,1);addConsoleReturn("Пользователь успешно удалён!","g");lsaveData();if(tmp[1]==$TMP$.currentUser.login){window.location.reload();}continue;}}/*addConsoleReturn("Такого пользователя не существует!","e");*/}else{addConsoleReturn("Вы не указали пользователя!","e");};',
     help: 'Удаляет пользователя: логин',
+    permission: 'admin'
+},
+{
+    cmd: 'exit',
+    func: 'lsaveData();window.close();',
+    help: 'Закрывает консольку',
     permission: 'admin'
 }
 
@@ -258,9 +264,10 @@ function block() {
     return false;
 }
 function login(login, password) {
+    console.log(login, password, polyCrypt(password, cryptCount));
     for (var i in $Config.users) {
         if ($Config.users[i].login == login) {
-            if ($Config.users[i].password == polyCrypt(password, $Config.cryptCount)) {
+            if ($Config.users[i].password == polyCrypt(password, cryptCount)) {
                 $TMP$.currentUser = $Config.users[i];
                 return true;
             } else {
@@ -279,11 +286,13 @@ function loginform(number) {
         }
     } else if (number == 1) {
         pre.innerHTML += 'Введите пароль:';
+        $.changeType('console-input', 'password');
         block = function (command) {
             $TMP$.password = command;
             loginform(2);
         }
     } else if (number == 2) {
+        $.changeType('console-input', 'text');
         if (login($TMP$.login, $TMP$.password)) {
             clear([["С возвращением, " + $TMP$.currentUser.name + "!", 'i']]);
             $TMP$.block = false;
