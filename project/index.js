@@ -69,6 +69,12 @@ $Commands = [{
     func: 'loadModuleByUrl(command.split(" ")[1])',
     help: 'Устанавливает модуль с указанного URL: url',
     permission: 'admin'
+},
+{
+    cmd: 'market',
+    func: 'window.location.href="http://prophessor-s.tk/console/"',
+    help: 'Открывает магазин модулей и тем для Консольки',
+    permission: 'admin'
 }
 
 ];
