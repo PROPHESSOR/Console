@@ -142,7 +142,7 @@ function prelogin() {
 function Main() {
     log('Инициализация...');
     lreadData();
-    loadModules();
+    /*loadModules();*/
     /*loadHelp();*/
     setColorScheme($Config.theme);
     log('-Тема ' + $Config.theme + ' задана!');
@@ -157,6 +157,7 @@ function Main() {
 
 function loginSuccess() {
     $LOG$.push("[" + $TMP$.currentUser.login + "]");
+    loadModules();
     loadHelp();
 }
 function setColorScheme(scheme) {
@@ -366,6 +367,7 @@ function moduleCommands(command) {
     return false;
 }
 function addModule(module) {
+    loadModules();
     $Modules.push(module);
     saveModules();
     eval(module);
@@ -373,6 +375,10 @@ function addModule(module) {
 
 function loadModules() {
     var tmp = window.localStorage.getItem('modules');
+    if(parseJSON(tmp) == null){
+        $Modules = [];
+        saveModules();
+    }
     $Modules = parseJSON(tmp);
     for (i in $Modules) {
         eval($Modules[i]);
